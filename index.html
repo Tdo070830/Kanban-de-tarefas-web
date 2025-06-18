@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban de Tarefas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>🚀 Kanban de Tarefas</h1>
+    <div class="actions">
+        <input type="text" id="search" placeholder="🔍 Buscar tarefas..." oninput="searchTasks()">
+        <select id="filterPriority" onchange="searchTasks()">
+            <option value="">Todas Prioridades</option>
+            <option value="alta">Alta</option>
+            <option value="media">Média</option>
+            <option value="baixa">Baixa</option>
+        </select>
+        <button onclick="clearAll()">🗑️ Limpar Tudo</button>
+        <button id="toggle-mode">🌙 Tema</button>
+    </div>
+</header>
+
+<div class="input-task">
+    <input type="text" id="new-task" placeholder="Digite uma nova tarefa...">
+    <input type="date" id="due-date">
+    <select id="priority">
+        <option value="baixa">Baixa</option>
+        <option value="media">Média</option>
+        <option value="alta">Alta</option>
+    </select>
+    <button onclick="addTask()">Adicionar</button>
+</div>
+
+<div class="board">
+    <div class="column" id="todo" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <h2>📋 A Fazer (<span id="count-todo">0</span>)</h2>
+    </div>
+    <div class="column" id="in-progress" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <h2>🛠️ Em Andamento (<span id="count-in-progress">0</span>)</h2>
+    </div>
+    <div class="column" id="done" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <h2>✅ Concluído (<span id="count-done">0</span>)</h2>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
